@@ -73,7 +73,7 @@ module Thrifty
       # Use the basename for informational purposes, and the SHA1 for
       # avoid collisions.
       base = File.basename(thrift_file)
-      sha1 = Digest::SHA1.hexdigest(thrift_file)
+      sha1 = Digest::SHA1.hexdigest(File.open(thrift_file).read)
       File.join(basedir, "#{base}-#{sha1}")
     end
 
